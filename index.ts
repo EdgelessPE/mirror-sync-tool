@@ -3,7 +3,8 @@ import * as fs from "fs";
 interface Package {
     name:string,
     fullName:string,
-    category:string
+    category:string,
+    illegalVersion:boolean
 }
 
 const dir="E:/Edgeless/OneDrive - 洛阳科技职业学院/插件包"
@@ -24,7 +25,8 @@ function main() {
                 array.push({
                     name:fullName.split('_')[0],
                     fullName,
-                    category
+                    category,
+                    illegalVersion:fullName.split('_')[1].match(/\d*\.\d*(\.\d)?(\.\d)?/)==null
                 })
             }
         })
@@ -35,7 +37,7 @@ function main() {
         return a.name.localeCompare(b.name, "zh")
     })
 
-    //遍历找出重复名称
+    //遍历找出重复名称，并警告非法版本号
     let tmp={
         name:"",
         fullName:"",
@@ -47,6 +49,9 @@ function main() {
             console.log(`${item.fullName} at ${item.category}`)
         }else {
             tmp=item
+        }
+        if(item.illegalVersion){
+            console.log(`${item.fullName} at ${item.category}`)
         }
     }
 

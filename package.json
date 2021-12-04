@@ -11,6 +11,6 @@
     "typescript": "^4.5.2"
   },
   "scripts": {
-    "run": "ts-node index.ts"
+    "detect": "ts-node index.ts"
   }
 }
