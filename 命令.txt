@@ -1,0 +1,2 @@
+rclone sync "E:\Edgeless\OneDrive - 洛阳科技职业学院\插件包" pineapple:/hdisk/edgeless/插件包 --size-only --include "/*/*.7z"
+rclone sync pineapple:/hdisk/edgeless/插件包 "E:\Edgeless\OneDrive - 洛阳科技职业学院\插件包" --size-only --include "/*/*.7z"
