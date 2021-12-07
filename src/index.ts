@@ -1,7 +1,7 @@
 import { solveIllegalName, solveRepeated } from "./jury";
 import { generate } from "./listGenerator";
 import { solveUpdate } from "./updater";
-import {isIllegalPackageName} from "./utils";
+import {isIllegalPackageName, log} from "./utils";
 
 export const config = {
   LOCAL_ROOT: "E:/Edgeless/OneDrive - 洛阳科技职业学院/插件包",
@@ -12,12 +12,12 @@ export const config = {
 async function main() {
   //从服务器向本地同步
   //sync(config.REMOTE_ROOT,config.LOCAL_ROOT)
+  //解决本地根目录和新增目录的名称合法性
+  await solveIllegalName(config.LOCAL_ROOT, false);
+  await solveIllegalName(config.NEWLY_ADDED, true);
   //读取本地根目录和新增目录
   let rootList = generate(config.LOCAL_ROOT, false),
-    newList = generate(config.NEWLY_ADDED, true);
-  //解决本地根目录和新增目录的名称合法性
-  await solveIllegalName(rootList);
-  await solveIllegalName(newList);
+      newList = generate(config.NEWLY_ADDED, true);
   //处理本地插件重复，然后更新列表
   solveRepeated(rootList);
   rootList = generate(config.LOCAL_ROOT, false);
@@ -27,6 +27,8 @@ async function main() {
   solveRepeated(rootList);
   //从本地向服务器同步
   //sync(config.LOCAL_ROOT,config.REMOTE_ROOT)
+
+  log("Success:Syncing finished")
 }
 
-main().then();
+main().then(_=>{process.exit(0)});

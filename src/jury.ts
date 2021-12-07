@@ -3,6 +3,7 @@ import path from "path";
 import { config } from "./index";
 import { Package, Cmp } from "./class";
 import { versionCmp, log, keypress, sort } from "./utils";
+import {generate} from "./listGenerator";
 
 //移动一个包至“历史版本”文件夹
 function eliminate(item: Package): boolean {
@@ -49,8 +50,9 @@ function judge(a: Package, b: Package): Package {
 }
 
 //提示非法的名称，并等待被解决
-async function solveIllegalName(array: Array<Package>): Promise<null> {
+async function solveIllegalName(rootFolder: string, plain: boolean): Promise<null> {
   return new Promise(async (resolve) => {
+    let array=generate(rootFolder,plain)
     //输出非法版本号
     let restart = false;
     for (let item of array) {
@@ -64,7 +66,7 @@ async function solveIllegalName(array: Array<Package>): Promise<null> {
         "Warning:Illegal name detected,please deal with that before press any key to continue"
       );
       await keypress();
-      await solveIllegalName(array);
+      await solveIllegalName(rootFolder,plain);
       resolve(null);
     } else {
       resolve(null);

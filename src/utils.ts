@@ -45,7 +45,7 @@ function versionCmp(a: string, b: string): Cmp {
 
 function isIllegalPackageName(fullName: string): boolean {
   let version=fullName.split("_")[1]
-  return fullName.match(/^[^_]*_[^_]*_[^_]*.7z$/) == null || version.match(/\d*\.\d*(\.\d)?(\.\d)?/)==null;
+  return fullName.match(/^[^_]*_[^_]*_[^_]*.7z$/) == null || version.match(/^\d+\.\d+(\.\d+)?(\.\d+)?$/)==null;
 }
 
 async function keypress() {
