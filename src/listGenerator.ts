@@ -1,11 +1,10 @@
 import { Package } from "./class";
 import { isIllegalPackageName } from "./utils";
 import fs from "fs";
-import exp from "constants";
 
-export function generate(rootFoler: string, plain: boolean): Array<Package> {
+export function generate(rootFolder: string, plain: boolean): Array<Package> {
   //获取根列表
-  let rootList = fs.readdirSync(rootFoler);
+  let rootList = fs.readdirSync(rootFolder);
 
   //新建数组
   let array = [] as Array<Package>;
@@ -20,7 +19,7 @@ export function generate(rootFoler: string, plain: boolean): Array<Package> {
     //遍历全部分类
     let list;
     rootList.forEach((category) => {
-      list = fs.readdirSync(rootFoler + "/" + category);
+      list = fs.readdirSync(rootFolder + "/" + category);
       list.forEach((fullName) => {
         if (fullName != "历史版本") {
             array.push(packageGenerator(fullName,category))

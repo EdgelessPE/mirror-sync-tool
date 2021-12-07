@@ -44,7 +44,8 @@ function versionCmp(a: string, b: string): Cmp {
 }
 
 function isIllegalPackageName(fullName: string): boolean {
-  return fullName.match(/^[^_]*_\d*\.\d*(\.\d)?(\.\d)?_[^_]*.7z/) == null;
+  let version=fullName.split("_")[1]
+  return fullName.match(/^[^_]*_[^_]*_[^_]*.7z$/) == null || version.match(/\d*\.\d*(\.\d)?(\.\d)?/)==null;
 }
 
 async function keypress() {
@@ -67,7 +68,7 @@ function sort(array: Array<Package>): Array<Package> {
 
 function log(text: string) {
   // 增加字符串类型判断
-  if (typeof text !== "string") {
+  if (typeof text != "string") {
     console.log(chalk.yellow("Warning ") + "Illegal type detected");
     console.log(JSON.stringify(text));
     return;

@@ -1,6 +1,5 @@
 import fs from "fs";
 import path from "path";
-import { resolve } from "path/posix";
 import { config } from ".";
 import { Package } from "./class";
 import { log,keypress } from "./utils";

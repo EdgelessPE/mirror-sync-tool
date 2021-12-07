@@ -1,5 +1,3 @@
-import exp from "constants";
-
 interface Package {
   name: string;
   version: string;

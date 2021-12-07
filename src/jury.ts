@@ -75,7 +75,6 @@ async function solveIllegalName(array: Array<Package>): Promise<null> {
 function solveRepeated(array: Array<Package>): void {
   let sortedArray = sort(array);
   //找出重复名称并裁决
-  let restart = false;
   let tmp = {
     name: "",
     fullName: "",

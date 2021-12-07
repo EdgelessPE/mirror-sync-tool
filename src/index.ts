@@ -1,10 +1,7 @@
-import fs from "fs";
-import path from "path";
-import { Package } from "./class";
 import { solveIllegalName, solveRepeated } from "./jury";
 import { generate } from "./listGenerator";
-import { sync } from "./rclone";
 import { solveUpdate } from "./updater";
+import {isIllegalPackageName} from "./utils";
 
 export const config = {
   LOCAL_ROOT: "E:/Edgeless/OneDrive - 洛阳科技职业学院/插件包",

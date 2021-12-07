@@ -1,17 +1,17 @@
 {
-  "name": "repeated-detection",
+  "name": "mirror-sync-tool",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Cno",
   "license": "MIT",
   "dependencies": {
     "@types/node": "^16.11.10",
-    "chalk": "^5.0.0",
+    "chalk": "4.1.1",
     "node-ts": "^5.1.2",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.2"
   },
   "scripts": {
-    "detect": "ts-node index.ts"
+    "sync": "ts-node src/index.ts"
   }
 }
