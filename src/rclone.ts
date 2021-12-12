@@ -2,7 +2,7 @@ import cp from "child_process";
 import {log} from "./utils";
 
 export function sync(source: string, target: string) {
-    log("Info:Syncing data")
+    log("Info:Transferring data...")
     cp.execSync(`rclone sync "${source}" "${target}" --size-only --include "/*/*.7z"`)
-    log("Info:Syncing finished")
+    log("Info:Data transferred")
 }
