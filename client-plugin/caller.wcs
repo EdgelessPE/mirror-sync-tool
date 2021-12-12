@@ -1,0 +1,4 @@
+file "C:\Pack_Test\packs"
+mdir "C:\Pack_Test\packs"
+exec ="X:\Program Files\Edgeless\EasyDown\aria2c.exe" --check-certificate=false -x2 -c -d "C:\Pack_Test" -o _pack.7z "http://192.168.100.157/chfs/shared/Download/_pack.7z"
+ifex "C:\Pack_Test\_pack.7z",exec "X:\Program Files\Edgeless\run.bat"

@@ -4,4 +4,4 @@ cd /d "D:\Download"
 cd "D:\Desktop\Projects\EdgelessPE\mirror-sync-tool\scripts"
 pwsh -File .\Stop_VM.ps1
 pwsh -File .\Start_VM.ps1
-pause
+exit
