@@ -1,5 +1,5 @@
 set DIR=C:\Pack_Test
 file "%DIR%"
 mdir "%DIR%\packs"
-exec ="X:\Program Files\Edgeless\EasyDown\aria2c.exe" --check-certificate=false -x2 -c -d "%DIR%" -o _pack.7z "http://192.168.100.233/chfs/shared/Download/_pack.7z"
+exec ="X:\Program Files\Edgeless\EasyDown\aria2c.exe" --check-certificate=false -x2 -c -d "%DIR%" -o _pack.7z "http://192.168.78.1/chfs/shared/Download/_pack.7z"
 ifex "%DIR%\_pack.7z",exec "X:\Program Files\Edgeless\run.bat"

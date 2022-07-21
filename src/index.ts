@@ -3,15 +3,21 @@ import {generate} from "./listGenerator";
 import {solveUpdate} from "./updater";
 import {log} from "./utils";
 import {sync} from "./rclone";
+import fs from "fs";
 
 
 export const config = {
-    LOCAL_ROOT: "E:/Edgeless/OneDrive - 洛阳科技职业学院/插件包",
+    LOCAL_ROOT: "I:/Edgeless/OneDrive - 洛阳科技职业学院/插件包",
     REMOTE_ROOT: "pineapple:/hdisk/edgeless/插件包",
     NEWLY_ADDED: "D:/Download",
 };
 
 async function main() {
+    //检查位置是否存在
+    if(!fs.existsSync(config.LOCAL_ROOT)||!fs.existsSync(config.NEWLY_ADDED)){
+        log("Error:Path not exist")
+        return
+    }
     //从服务器向本地同步
     sync(config.REMOTE_ROOT,config.LOCAL_ROOT)
     //解决本地根目录名称合法性问题
