@@ -20,6 +20,12 @@ function eliminate(item: Package): boolean {
 
 //处理包名冲突，淘汰输家，返回赢家
 function judge(a: Package, b: Package): Package {
+    //处理其中有bot构建的情况
+    if(a.fullName.indexOf("bot")!=-1&&b.fullName.indexOf("bot")==-1){
+        return a
+    }else if(a.fullName.indexOf("bot")==-1&&b.fullName.indexOf("bot")!=-1){
+        return b
+    }
     let cmpRes = versionCmp(a.version, b.version);
     let eliminatedTarget, reservedTarget;
     switch (cmpRes) {
