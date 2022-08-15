@@ -7,7 +7,7 @@ import fs from "fs";
 
 
 export const config = {
-    LOCAL_ROOT: "I:/Edgeless/OneDrive - 洛阳科技职业学院/插件包",
+    LOCAL_ROOT: "E:/Edgeless/OneDrive - 洛阳科技职业学院/插件包",
     REMOTE_ROOT: "pineapple:/hdisk/edgeless/插件包",
     NEWLY_ADDED: "D:/Download",
 };

@@ -20,28 +20,32 @@ function eliminate(item: Package): boolean {
 
 //处理包名冲突，淘汰输家，返回赢家
 function judge(a: Package, b: Package): Package {
+    let eliminatedTarget, reservedTarget;
     //处理其中有bot构建的情况
     if(a.fullName.indexOf("bot")!=-1&&b.fullName.indexOf("bot")==-1){
-        return a
+        eliminatedTarget = b;
+        reservedTarget = a;
     }else if(a.fullName.indexOf("bot")==-1&&b.fullName.indexOf("bot")!=-1){
-        return b
-    }
-    let cmpRes = versionCmp(a.version, b.version);
-    let eliminatedTarget, reservedTarget;
-    switch (cmpRes) {
-        case Cmp.L:
-            eliminatedTarget = a;
-            reservedTarget = b;
-            break;
-        case Cmp.G:
-            eliminatedTarget = b;
-            reservedTarget = a;
-            break;
-        default:
-            log(`Warning:Equal version detected,eliminate former`);
-            eliminatedTarget = a;
-            reservedTarget = b;
-            break;
+        eliminatedTarget = a;
+        reservedTarget = b;
+    }else{
+        let cmpRes = versionCmp(a.version, b.version);
+        switch (cmpRes) {
+            case Cmp.L:
+                eliminatedTarget = a;
+                reservedTarget = b;
+                break;
+            case Cmp.G:
+                eliminatedTarget = b;
+                reservedTarget = a;
+                break;
+            default:
+                log(`Warning:Equal version detected,eliminate former`);
+                eliminatedTarget = a;
+                reservedTarget = b;
+                break;
+        }
+
     }
     if (eliminate(eliminatedTarget)) {
         log(
